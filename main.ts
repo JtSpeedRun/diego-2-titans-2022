@@ -17544,7 +17544,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, 
     controller.moveSprite(sprite, 0, 0)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    if (sprite.y <= otherSprite.y) {
+    if (sprite.y > otherSprite.y) {
         music.knock.play()
         statusbar.value += -1
         sprite.vx = -300
@@ -17553,7 +17553,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         } else {
             info.changeScoreBy(-5)
         }
-    } else if (sprite.y > otherSprite.y) {
+    } else if (sprite.y <= otherSprite.y) {
         music.powerUp.play()
         otherSprite.destroy()
         sprite.vy = -300
